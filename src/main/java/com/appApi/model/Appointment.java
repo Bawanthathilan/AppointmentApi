@@ -45,8 +45,8 @@ public class Appointment {
 	public String getMessage() {
 		return message;
 	}
-	public void setMessage(String date) {
-		this.date = date;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	public String getDate() {
 		return date;

@@ -181,6 +181,7 @@ public class appointmentService {
             preparedStmt.setInt(7, appointment.getDocID());
             preparedStmt.setInt(8, appointment.getPatientID());
             preparedStmt.setString(9, appointment.getDate());
+            preparedStmt.setInt(10, appointment.getAppID());
             
             
 

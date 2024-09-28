@@ -73,6 +73,10 @@ public class Appointment {
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
 	}
+	public int getHospitalName() {
+		return hospitalName;
+	}
+	
 	
 	 @Override
 	    public String toString() {

@@ -76,7 +76,9 @@ public class Appointment {
 	public int getHospitalName() {
 		return hospitalName;
 	}
-	
+	public void setHospitalName(int hospitalName) {
+		this.hospitalName = hospitalName;
+	}
 	
 	 @Override
 	    public String toString() {

@@ -93,6 +93,7 @@ public class Appointment {
 	                ", hospitalID='" + hospitalID + '\'' +
 	                ", docID='" + docID + '\'' +
 	                ", patientID='" + patientID + '\'' +
+	                ", hospitalName='" + hospitalName + '\'' +
 	                '}';
 	    }
 	

@@ -11,6 +11,7 @@ public class Appointment {
 	private int hospitalID;
 	private int docID;
 	private int patientID;
+	private String hospitalName;
 	
 	public int getAppID() {
 		return appID;

@@ -7,7 +7,7 @@ public class Appointment {
 	private String email;
 	private String address;
 	private String message;
-	private String date;
+	private Date date;
 	private int hospitalID;
 	private int docID;
 	private int patientID;
@@ -49,10 +49,10 @@ public class Appointment {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public int getHospitalID() {

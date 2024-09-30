@@ -101,6 +101,7 @@ public class Appointment {
 	                ", docID='" + docID + '\'' +
 	                ", patientID='" + patientID + '\'' +
 	                ", hospitalName='" + hospitalName + '\'' +
+	                ", illness='" + illness + '\'' +
 	                '}';
 	    }
 	

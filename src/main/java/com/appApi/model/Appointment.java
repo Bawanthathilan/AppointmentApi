@@ -80,6 +80,9 @@ public class Appointment {
 	public void setHospitalName(int hospitalName) {
 		this.hospitalName = hospitalName;
 	}
+	public int getillness() {
+		return illness;
+	}
 	
 	 @Override
 	    public String toString() {

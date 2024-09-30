@@ -12,6 +12,7 @@ public class Appointment {
 	private int docID;
 	private int patientID;
 	private String hospitalName;
+	private String illness;
 	
 	public int getAppID() {
 		return appID;

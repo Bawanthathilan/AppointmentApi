@@ -83,6 +83,9 @@ public class Appointment {
 	public int getillness() {
 		return illness;
 	}
+	public void setIllness(int illness) {
+		this.illness = illness;
+	}
 	
 	 @Override
 	    public String toString() {

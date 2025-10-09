@@ -80,7 +80,7 @@ public class appointmentResource {
         appointment.setMessage(appObject.get("message").getAsString());
         appointment.setHospitalID(Integer.parseInt(appObject.get("hospitalID").getAsString()));
         appointment.setDocID(Integer.parseInt(appObject.get("docID").getAsString()));
-        appointment.setPatientID(Integer.parseInt(appObject.get("patienID").getAsString()));
+    appointment.setPatientID(Integer.parseInt(appObject.get("patientID").getAsString()));
         appointment.setDate(appObject.get("date").getAsString());
         
 
@@ -97,6 +97,13 @@ public class appointmentResource {
         Document doc = Jsoup.parse(appData, "", Parser.xmlParser());
         String appID = doc.select("appID").text();
         return appRepo.deleteItem(appID);
+    }
+
+    @GET
+    @Path("/patient/{patientID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String readAppointmentsByPatient(@PathParam("patientID") String patientID) {
+        return appRepo.readAppointmentsByPatient(patientID);
     }
 	
 	

@@ -133,7 +133,7 @@ public class appointmentService {
                 
                 	appointment.setAppID(rs.getInt("appID"));
                 	appointment.setFullName(rs.getString("fullName"));
-                	appointment.setPhoneNo(rs.getInt("phonrNo"));
+                	appointment.setPhoneNo(rs.getInt("phoneNo"));
                 	appointment.setEmail(rs.getString("email"));
                 	appointment.setAddress(rs.getString("address"));
                 	appointment.setMessage(rs.getString("message"));
@@ -157,6 +157,67 @@ public class appointmentService {
         System.out.println("No such appointment in system");
         return new Appointment();
 
+    }
+
+    public String readAppointmentsByPatient(String patientId) {
+        DBconnection connection = new DBconnection();
+        StringBuilder json = new StringBuilder();
+        try {
+            Connection con = connection.getConnection();
+
+            if (con == null) {
+                return "[]";
+            }
+
+            String query = "select * from appointment where patientID = ?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setString(1, patientId);
+            ResultSet rs = pstmt.executeQuery();
+
+            json.append("[");
+            boolean first = true;
+            while (rs.next()) {
+                if (!first) json.append(",");
+                first = false;
+
+                int appID = rs.getInt("appID");
+                String fullName = rs.getString("fullName");
+                int phoneNo = rs.getInt("phoneNo");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String message = rs.getString("message");
+                int hospitalID = rs.getInt("hospitalID");
+                int docID = rs.getInt("docID");
+                int patientID = rs.getInt("patientID");
+                String date = rs.getString("date");
+
+                json.append("{");
+                json.append("\"appID\":").append(appID).append(",");
+                json.append("\"fullName\":\"").append(escapeJson(fullName)).append("\",");
+                json.append("\"phoneNo\":").append(phoneNo).append(",");
+                json.append("\"email\":\"").append(escapeJson(email)).append("\",");
+                json.append("\"address\":\"").append(escapeJson(address)).append("\",");
+                json.append("\"message\":\"").append(escapeJson(message)).append("\",");
+                json.append("\"hospitalID\":").append(hospitalID).append(",");
+                json.append("\"docID\":").append(docID).append(",");
+                json.append("\"patientID\":").append(patientID).append(",");
+                json.append("\"date\":\"").append(escapeJson(date)).append("\"");
+                json.append("}");
+            }
+            json.append("]");
+            con.close();
+            return json.toString();
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            return "[]";
+        }
+    }
+
+    // minimal JSON string escaper
+    private String escapeJson(String s) {
+        if (s == null) return "";
+        return s.replace("\\", "\\\\").replace("\"", "\\\"").replace("\n", "\\n").replace("\r", "\\r");
     }
 
 

@@ -105,7 +105,12 @@ public class appointmentResource {
     public String readAppointmentsByPatient(@PathParam("patientID") String patientID) {
         return appRepo.readAppointmentsByPatient(patientID);
     }
-	
-	
+
+    @GET
+    @Path("/doctor/{doctorID}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String readAppointmentsByDoctor(@PathParam("doctorID") String doctorID) {
+        return appRepo.readAppointmentsByDoctor(doctorID);
+    }
 	
 }
